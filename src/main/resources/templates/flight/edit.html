@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Flight</title>
+</head>
+<body>
+<form method="post" th:action="${'/flights/update'}" th:object="${flight}">
+    <input type="hidden" name="id" th:field="*{id}"/>
+    
+    <div>
+        <fieldset>
+            <legend>Edit Flight Details</legend>
+            <div>
+                <label>Registration Number:</label>
+                <input type="text" name="regNum" th:value="${flight.getFlightRegNum()}" readonly/>
+            </div>
+            <div>
+                <label>Aircraft Model:</label>
+                <input type="text" name="a_model" th:value="${flight.getAircraft().getAircraftModel()}" readonly/>
+            </div>
+            <div>
+                <label>Departure Port:</label>
+                <input type="text" name="departure" th:value="${flight.getDeparture()}" required/>
+            </div>
+            <div>
+                <label>Destination Port:</label>
+                <input type="text" name="destination" th:value="${flight.getDestination()}" required/>
+            </div>
+            
+            <div>
+                <label>Departure Date:</label>
+                <input type="text" th:value="${flight.getDepartureDate()}" readonly/>
+                <input type="datetime-local" name="departureDate" required/>
+            </div>
+            <div>
+                <label>Estimated Arrival Time:</label>
+                <input type="text" th:value="${flight.getArrivalTime()}" readonly/>
+                <input type="datetime-local" name="estArrivalTime" required/>
+            </div>
+            <div>
+                <label>Price:</label>
+                <input type="text" name="price" th:value="${flight.getPrice()}" required/>
+            </div>
+            
+            <div>
+               <button>Edit</button>
+            </div>
+        
+        </fieldset>
+    
+    </div>
+</form>
+
+</body>
+</html>

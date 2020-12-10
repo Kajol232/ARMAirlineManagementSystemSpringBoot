@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Flight List</title>
+</head>
+<body>
+<table>
+    <tr>
+        <th>Registration Number</th>
+        <th>Destination</th>
+        <th>Departure</th>
+        <th>Departure Time</th>
+        <th>Action</th>
+    </tr>
+    
+    <tr th:each="f:*{flights}">
+        <td th:text="${f.getFlightRegNum()}"></td>
+        <td th:text="${f.getDestination()}"></td>
+        <td th:text="${f.getDeparture()}"></td>
+        <td th:text="${f.getDepartureDate()}"></td>
+        <td>
+            <a th:href="@{/flights/edit/{id}(id=${f.getId()})}"><button>Edit</button> </a>
+            <a th:href="@{/flights/delete/{id}(id=${f.getId()})}"><button
+                    onclick="return confirm('Are you sure you want to delete?');">Delete</button> </a>
+            <a th:href="@{/flights/details/{id}(id=${f.getId()})}"><button>Details</button> </a>
+
+
+        </td>
+    </tr>
+</table>
+</body>
+</html>

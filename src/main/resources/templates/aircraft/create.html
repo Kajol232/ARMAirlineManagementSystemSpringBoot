@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}">
+<head>
+    <meta charset="UTF-8">
+    
+    <title>New Aircraft</title>
+</head>
+<body class="mt-5">
+<div layout:fragment="content" class="container">
+    <div class="row mt-5 mb-5 justify-content-center">
+        <div class="card p-2 mb-3">
+            <form method="post" th:action="${'/aircrafts/add'}">
+    <div>
+        <label>Aircraft Name:</label>
+        <input type="text" name="name" placeholder="Aircraft Name" required/>
+    </div>
+    <div>
+        <label>Aircraft Model:</label>
+        <input type="text" name="aircraftModel" placeholder="Aircraft Model" required/>
+    </div>
+    <div>
+        <label>Aircraft Capacity:</label>
+        <input type="number" min="1" name="capacity" placeholder="Aircraft capacity" required/>
+    </div>
+    <div>
+        <button type="submit">Create</button>
+    </div>
+</form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

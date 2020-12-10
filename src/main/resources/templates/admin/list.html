@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin List</title>
+</head>
+<body>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>LastName</th>
+        <th>FirstName</th>
+        <th>Gender</th>
+        <th>Email</th>
+        <th>Mobile</th>
+        <th>Action</th>
+    </tr>
+    <tr th:each="u:*{admins}">
+        <td th:text="${u.getId()}"></td>
+        <td th:text="${u.getLastName()}"></td>
+        <td th:text="${u.getFirstName()}"></td>
+        <td th:text="${u.getSex()}"></td>
+        <td th:text="${u.getUsername()}"></td>
+        <td th:text="${u.getMobile()}"></td>
+        <td>
+            <a th:href="@{/users/update/{id}(id=${u.getId()})}"><button>Edit</button> </a>
+            <a th:href="@{/admins/delete/{id}(id=${u.getId()})}"><button
+                    onclick="return confirm('Are you sure you want to delete?');">Delete</button> </a>
+            <a th:href="@{/admins/details/{id}(id=${u.getId()})}"><button>Details</button> </a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Assign New Roles</title>
+</head>
+<body>
+    <form method="post" th:action="${'/admins/assignNewRole'}">
+        <div>
+            <label for="role">Roles:</label>
+            <select name="role" id="role">
+                <option value="">Select New Role</option>
+                <option th:each ="r : ${roles}"
+                        th:value="${r.getId()}"
+                        th:text ="${r.getName()}">
+            
+                </option>
+            </select>
+    
+        </div>
+        <div>
+            <button type="submit">Add Role</button>
+        </div>
+    </form>
+</body>
+</html>

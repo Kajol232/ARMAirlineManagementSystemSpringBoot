@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Aircraft Lists</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Model</th>
+            <th>Status</th>
+            <th>Capacity</th>
+            <th>Action</th>
+        </tr>
+        
+        <tr th:each="a:*{aircrafts}">
+            <td th:text="${a.getId()}"></td>
+            <td th:text="${a.getName()}"></td>
+            <td th:text="${a.getAircraftModel()}"></td>
+            <td th:text="${a.getStatus()}"></td>
+            <td th:text="${a.getCapacity()}"></td>
+            <td>
+                <a th:href="@{/aircrafts/edit/{id}(id=${a.getId()})}"><button>Edit</button> </a>
+                <a th:href ="@{/aircrafts/delete/{id}(id=${a.getId})}"><button
+                        onclick="return confirm('Are you sure you want to delete?');">Delete</button> </a>
+            </td>
+        </tr>
+    </table>
+
+</body>
+</html>

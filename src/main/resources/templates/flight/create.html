@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New Flight</title>
+</head>
+<body>
+    <form method="post" th:action="${'/flights/add'}" >
+        <fieldset>
+            <fieldset>
+            <legend>Assign Aircraft</legend>
+            <div>
+                <label for="aircraft">Aircraft Model:</label>
+                <select name="aircraft" id="aircraft">
+                    <option value="">Select Aircraft</option>
+                    <option th:each ="a : ${aircrafts}"
+                            th:value="${a.getId()}"
+                            th:text ="${a.aircraftModel +' ' + a.capacity}">
+                
+                    </option>
+                </select>
+        
+            </div>
+        </fieldset>
+            <fieldset>
+            <legend>Flight Details</legend>
+            <div>
+                <label>Departure Port:</label>
+                <input type="text" name="departure" placeholder="Leaving from?" required/>
+            </div>
+            <div>
+                <label>Destination Port:</label>
+                <input type="text" name="destination" placeholder="Going to?" required/>
+            </div>
+            <div>
+                <label>Departure Date:</label>
+                <input type="datetime-local" name="departureDate" required/>
+            </div>
+            <div>
+                <label>Estimated Arrival Time:</label>
+                <input type="datetime-local" name="estArrivalTime" required/>
+            </div>
+    
+            <div>
+                <label>Price:</label>
+                <input type="text" name="price" required/>
+            </div>
+            
+        </fieldset>
+            <div>
+                <button type="submit">New Flight</button>
+            </div>
+        </fieldset>
+        
+    </form>
+
+</body>
+</html>

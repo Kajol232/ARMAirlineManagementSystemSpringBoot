@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Muhammad Amotul-Rahman Oluwatosin">
+    
+    <title layout:title-pattern="$LAYOUT_TITLE - $CONTENT_TITLE">ARMAirlineManagementSystem</title>
+    
+    <link rel="icon" type="image/JPG" sizes="16x16" th:href="@{images/icon.JPG}">
+    <link  type="text/css" th:href="@{../static/bootstrap/css/bootstrap.css}">
+    <link  type="text/css" th:href="@{../static/css/modern-business.css}">
+    <link  type="text/css" th:href="@{../static/css/fontawesome.css}">
+    
+    
+</head>
+<body>
+
+<!--Navigation-->
+
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-sucess top navbar">
+    <div class="container text-light">
+        
+        <a class="navbar-brand" th:href="@{/}">
+            <img style="width: 25%" th:src = "@{../images/homeLogo.JPG}">
+        </a>
+        
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse id=navbarResponsive">
+            
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/}"><i class="fa fa-home"></i></a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/}"><i class="fa fa-info"></i>About</a>
+                </li>
+    
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/}"><i class="fa fa-envelope"></i>Contact</a>
+                </li>
+                <li class="nav-item mr-1 mb-1" sec:authorize="isAuthenticated()">
+                    <a th:href="@{/myPage}">
+                        <button class="btn btn-outline-light"><b>My Page</b></button>
+                    </a>
+                </li>
+    
+    
+                <div sec:authorize="isAuthenticated()">
+                    <li class="icons dropdown">
+                        <div class="text-white user-img c-pointer position-relative"   data-toggle="dropdown">
+                            <i class="fa fa-user-circle fa-2x"></i>
+                            <span sec:authentication="name">Email</span>
+                        </div>
+                        <div class="drop-down dropdown-profile dropdown-menu">
+                            <div class="dropdown-content-body">
+                                <ul>
+                                    <li>
+                                        <a th:href="@{/myPage}">
+                                            <i class="fa fa-user"></i>My Page
+                                        </a>
+                                    </li>
+                                    <li><a th:href="@{/logout}"><i class="fa fa-sign-out-alt"></i>Logout</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                </div>
+                <li sec:authorize="isAnonymous()" class="nav-item">
+                    <a class="nav-link" th:href="@{/login}"><i class="fa fa-sign-in-alt"></i>login</a>
+                </li>
+                <li sec:authorize="isAnonymous()" class="nav-item">
+                    <a class="nav-link" th:href="@{/users/create}"><i class="fa fa-plus-circle"></i>SignUp</a>
+                </li>
+            </ul>
+        </div>
+    
+    </div>
+</nav>
+
+<!--Content Section-->
+<section layout:fragment="content">
+    <p>Page content here</p>
+</section>
+
+
+<script th:src="@{../static/bootstrap/jQuery/jquery.js}"></script>
+<script th:src="@{../static/bootstrap/js/bootstrap.js}"></script>
+
+</body>
+</html>
