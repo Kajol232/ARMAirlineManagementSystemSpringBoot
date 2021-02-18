@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All Roles</title>
+</head>
+<body>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Action</th>
+    </tr>
+    
+    <tr th:each="r:*{roles}">
+        <td th:text="${r.getId()}"></td>
+        <td th:text="${r.getName()}"></td>
+        <td>
+            <a th:href="@{/roles/edit/{id}(id=${r.getId()})}"><button>Edit</button> </a>
+            <a th:href="@{/roles/delete/{id}(id=${r.getId()})}"><button>Delete</button> </a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

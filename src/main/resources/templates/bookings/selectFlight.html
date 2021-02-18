@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form method="post" th:action="${'/booking/bookFlight'}">
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Destination</th>
+            <th>Departure</th>
+            <th>Departure Time</th>
+            <th>Est. Arrival Time</th>
+            <th>Price</th>
+            <th>Action</th>
+        </tr>
+        <tr th:each="f:*{flights}">
+            <td name = "id" th:text="${f.getId()}"></td>
+            <td th:text="${f.getDestination()}"></td>
+            <td th:text="${f.getDeparture()}"></td>
+            <td th:text="${f.getDepartureDate()}"></td>
+            <td th:text="${f.getArrivalTime()}"></td>
+            <td th:text="${f.getPrice()}"></td>
+            <td>
+                <a th:href="@{/booking/createBooking/{id}(id=${f.getId()})}"><button>Book</button> </a>
+            </td>
+        </tr>
+    </table>
+</form>
+
+</body>
+</html>

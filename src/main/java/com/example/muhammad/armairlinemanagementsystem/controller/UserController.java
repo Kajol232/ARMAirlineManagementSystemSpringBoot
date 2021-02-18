@@ -81,7 +81,6 @@ public class UserController {
 
     }
 
-
     @GetMapping(value = "/myPage")
     public String myPage(Model model, Authentication authentication){
 
@@ -97,7 +96,7 @@ public class UserController {
         return "admin/dashboard";
     }
 
-    @GetMapping(value = "/users/moreinfo/{id}")
+    @GetMapping(value = "/users/moreInfo/{id}")
     public String users(@PathVariable("id") long id, Model model){
         User u = userRepository.findById(id).get();
         List<String> roles = new ArrayList<>();
@@ -106,7 +105,7 @@ public class UserController {
         }
         model.addAttribute("user", u);
         model.addAttribute("roles", roles);
-        return "user/details";
+        return "admin/adminDetails";
     }
 
     @GetMapping(value = "users/details/{id}")
@@ -219,11 +218,12 @@ public class UserController {
         return "admin/list";
     }
 
-    @GetMapping(value = "/admins/details/{id}")
+    /**@GetMapping(value = "/admins/details/{id}")
     public String staffDetails(@PathVariable("id") long id, Model model){
         model.addAttribute("user", userRepository.findById(id).get());
+
         return "/admin/adminDetails";
-    }
+    }*/
 
     @GetMapping(value = "/admins/delete/{id}")
     public String remove(@PathVariable("id") long id, Model model) {
@@ -242,13 +242,13 @@ public class UserController {
     }
 
     @PostMapping(value = "/admins/assignNewRole")
-    public String updateRole(Model model, @RequestParam long id, @RequestParam String name) {
+    public String updateRole(Model model, @RequestParam long id, @RequestParam String role) {
 
         User s= userRepository.findById(id).get();
-        Role role = roleRepository.findByName(name).get();
+        Role roles = roleRepository.findByName(role).get();
 
         List<Role> roleList = s.getRoles();
-        roleList.add(role);
+        roleList.add(roles);
         s.setRoles(roleList);
 
         userRepository.save(s);

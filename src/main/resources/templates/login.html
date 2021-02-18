@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Muhammad Amotul-Rahman Oluwatosin">
+    <title>User Login</title>
+    
+    <link rel="stylesheet" type="text/css" th:href="@{/css/signIn.css}">
+</head>
+<body class="text-center">
+<div layout:fragment="content" class="container">
+    
+    <form method="post" th:action="@{/login}" name="login" class="form-signin">
+        <img class="mb-4" src="/images/icon.jpg" alt="" width="72" height="72">
+        <h3 class="h3 mb-3 font-weight-normal">Sign In</h3>
+        <div th:if="${param.error}" class="alert alert-warning">Invalid username and password.</div>
+        <div th:if="${param.logout}" class="alert alert-success">You have been logged out, Please login again.</div>
+        <div>
+            <label class="sr-only">Username:</label>
+            <input class="form-control mb-3" type="text" id="username" name="username" placeholder="Email here"/>
+        </div>
+    
+        <div>
+            <label class="sr-only">Password:</label>
+            <input class="form-control" type="password" name="password" id="password"/>
+        </div>
+        <div><button class="btn btn-lg btn-primary btn-block" type="submit">Login</button> </div>
+        <div><a href="" class="alert-info">Forgot password</a> </div>
+        
+        <p class="mt-5 mb-3 text-muted">&copy; 2020</p>
+</form>
+            
+</div>
+</body>
+</html>

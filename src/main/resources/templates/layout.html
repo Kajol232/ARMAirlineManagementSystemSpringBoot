@@ -7,24 +7,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="author" content="Muhammad Amotul-Rahman Oluwatosin">
     
-    <title layout:title-pattern="$LAYOUT_TITLE - $CONTENT_TITLE">ARMAirlineManagementSystem</title>
+    <title layout:title-pattern="$CONTENT_TITLE - $LAYOUT_TITLE">ARMAirlineManagementSystem</title>
     
-    <link rel="icon" type="image/JPG" sizes="16x16" th:href="@{images/icon.JPG}">
-    <link  type="text/css" th:href="@{../static/bootstrap/css/bootstrap.css}">
-    <link  type="text/css" th:href="@{../static/css/modern-business.css}">
-    <link  type="text/css" th:href="@{../static/css/fontawesome.css}">
+    <link rel="icon" type="image/JPG" sizes="16x16" th:href="@{/images/icon.JPG}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap/css/bootstrap.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/modern-business.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/fontawesome.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/app.css}">
     
     
 </head>
-<body>
+<body class="body_container">
 
 <!--Navigation-->
 
-<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-sucess top navbar">
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary top navbar mb-5">
     <div class="container text-light">
         
         <a class="navbar-brand" th:href="@{/}">
-            <img style="width: 25%" th:src = "@{../images/homeLogo.JPG}">
+            <img style="width: 25%" th:src = "@{/images/homeLogo.JPG}">
         </a>
         
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
@@ -32,22 +33,28 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         
-        <div class="collapse navbar-collapse id=navbarResponsive">
+        <div class="collapse navbar-collapse" id="navbarResponsive">
             
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/}"><i class="fa fa-home"></i></a>
+                    <a class="nav-link" th:href="@{/}"><i class="fa fa-home">Home</i></a>
                 </li>
                 
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/}"><i class="fa fa-info"></i>About</a>
+                    <a class="nav-link" th:href="@{/about}"><i class="fa fa-info"></i>About</a>
                 </li>
     
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/}"><i class="fa fa-envelope"></i>Contact</a>
+                    <a class="nav-link" th:href="@{/contact}"><i class="fa fa-envelope"></i>Contact</a>
+                </li>
+                <li class ="nav-item">
+                    <a class="nav-link" th:href="@{login}"><i class="fa fa-sign-in-alt"></i>login</a>
+                </li>
+                <li  class="nav-item">
+                    <a class="nav-link" th:href="@{users/create}"><i class="fa fa-plus-circle"></i>SignUp</a>
                 </li>
                 <li class="nav-item mr-1 mb-1" sec:authorize="isAuthenticated()">
-                    <a th:href="@{/myPage}">
+                    <a th:href="@{myPage}">
                         <button class="btn btn-outline-light"><b>My Page</b></button>
                     </a>
                 </li>
@@ -57,13 +64,13 @@
                     <li class="icons dropdown">
                         <div class="text-white user-img c-pointer position-relative"   data-toggle="dropdown">
                             <i class="fa fa-user-circle fa-2x"></i>
-                            <span sec:authentication="name">Email</span>
+                            <span sec:authentication="name">Username</span>
                         </div>
                         <div class="drop-down dropdown-profile dropdown-menu">
                             <div class="dropdown-content-body">
                                 <ul>
                                     <li>
-                                        <a th:href="@{/myPage}">
+                                        <a th:href="@{myPage}">
                                             <i class="fa fa-user"></i>My Page
                                         </a>
                                     </li>
@@ -73,12 +80,7 @@
                         </div>
                     </li>
                 </div>
-                <li sec:authorize="isAnonymous()" class="nav-item">
-                    <a class="nav-link" th:href="@{/login}"><i class="fa fa-sign-in-alt"></i>login</a>
-                </li>
-                <li sec:authorize="isAnonymous()" class="nav-item">
-                    <a class="nav-link" th:href="@{/users/create}"><i class="fa fa-plus-circle"></i>SignUp</a>
-                </li>
+                
             </ul>
         </div>
     
@@ -89,10 +91,26 @@
 <section layout:fragment="content">
     <p>Page content here</p>
 </section>
+<!--Footer-->
+<footer class="footer py-1 bg-primary fixed-bottom">
+    <div class="container">
+        <p class="m-0 text-center text-white">
+            Copyright &copy; ARMAirline 2020
+            <a th:href="@{https://www.facebook.com}" target="_blank"><i class="ml-5 mr-2 fab fa-facebook-f"></i></a>
+            <a th:href="@{https://www.twitter.com}" target="_blank"><i class="mr-2 fab fa-twitter"></i></a>
+            <a th:href="@{https://www.instagram.com}" target="_blank"><i class="mr-2 fab fa-instagram"></i></a>
+            <!--            <a th:href="@{https://www.github.com}" target="_blank"><i class="mr-2 fab fa-github"></i></a>-->
+        </p>
+    </div>
+</footer>
 
 
-<script th:src="@{../static/bootstrap/jQuery/jquery.js}"></script>
-<script th:src="@{../static/bootstrap/js/bootstrap.js}"></script>
+<script th:src="@{/css/bootstrap/jQuery/jquery.js}"></script>
+<script th:src="@{/css/bootstrap/js/bootstrap.js}"></script>
+
+<!-- Content Section -->
+<section layout:fragment="scripts">
+</section>
 
 </body>
 </html>

@@ -5,40 +5,34 @@
     <title>Book Flight</title>
 </head>
 <body>
-<form method="post" th:action="${'/booking/bookFlight'}">
+<form method="post" th:action="${'/booking/createBooking'}">
+  
+    
     <div>
-        <label for="flight">Flight:</label>
-        <select name="flight" id="flight">
-            <option value="">Select Flight:</option>
-            <option th:each="f:${flights}"
-                    th:value="${f.getId()}"
-                    th:text="${f.getFlightRegNum()}">
-            </option>
+        <label >Flight class:</label>
+        <select name="classOfFlight" id="classOfFlight">
+            <option th:value="'FirstClass'" th:text="FirstClass"></option>
+            <option th:value="'Business'" th:text="Business"></option>
+            <option th:value="'Economy'" th:text="Economy"></option>
         </select>
-        <fieldset id="flightDetails">
-            <legend >Flight Details</legend>
-            <table>
-                <tr>
-                    <th>Id</th>
-                    <th>Destination</th>
-                    <th>Departure</th>
-                    <th>Departure Time</th>
-                    <th>Est. Arrival Time</th>
-                    <th>Price</th>
-                </tr>
-                <tr>
-                    <td th:text="${f.getId()}"></td>
-                    <td th:text="${f.getDestination()}"></td>
-                    <td th:text="${f.getDeparture()}"></td>
-                    <td th:text="${f.getDepartureDate()}"></td>
-                    <td th:text="${f.getArrivalTime()}"></td>
-                    <td th:text="${f.getPrice()}"></td>
-                </tr>
-            </table>
-        </fieldset>
+    </div>
+    
+    <div>
+        <label >Flight class:</label>
+        <select name="typeOfFlight" id="typeOfFlight">
+            <option th:value="'One-Way'" th:text="One-Way"></option>
+            <option th:value="'Return'" th:text="Return"></option>
+        </select>
+    </div>
+    
+    <div>
+        <label>Booking Price:</label>
+        <input type="text" th:value="${}">
     </div>
 
 </form>
-
+<script>
+    let flightprice =
+</script>
 </body>
 </html>

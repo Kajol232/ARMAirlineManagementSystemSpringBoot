@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Muhammad Amotul-Rahman Oluwatosin">
+    
+    <title layout:title-pattern="$CONTENT_TITLE - $LAYOUT_TITLE">ARMAirlineManagementSystem</title>
+    <link rel="icon" type="image/JPG" sizes="16x16" th:href="@{/images/icon.JPG}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap/css/bootstrap.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/signIn.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/fontawesome.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/dashboard.css}">
+</head>
+<body>
+<nav class="navbar fixed-top navbar-dark sticky-top bg-success flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" th:href="@{/}"><img style="width: 35%" th:src="@{/images/icon.png}"></a>
+    <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <!--    <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">-->
+    <ul class="navbar-nav px-3">
+        <li class="nav-item text-nowrap">
+            <a class="nav-link" th:href="@{/logout}"><button class="btn btn-outline-light">Sign out</button></a>
+        </li>
+    </ul>
+</nav>
+
+<!--<div class="margin-tp">-->
+<div class="container-fluid">
+    <div class="row">
+        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+            <div class="sidebar-sticky  pt-3">
+                <ul class="nav flex-column mt-2">
+                    <li class="nav-item">
+                        <a class="nav-link active" th:href="@{/}"><i class="fa fa-home"></i>Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" th:href="@{/myPage}">
+                            <i class="fa fa-user"></i>My Dashboard
+                        </a>
+                    </li>
+                    <div sec:authorize="hasRole('Admin')">
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/users/list}">
+                                <i class="fa fa-clipboard-list"></i>All Passengers
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/admins/list}">
+                                <i class="fa fa-clipboard-list"></i>All Admin
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/Admin/create}">
+                                <i class="fa fa-plus-circle"></i>Add New Admin
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/roles/list}">
+                                <i class="fa fa-clipboard-list"></i>All Roles
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/booking/list}">
+                                <i class="fa fa-clipboard-list"></i>All Bookings
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/aircraft/list}">
+                                <i class="fa fa-clipboard-list"></i>All Aircraft
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/flights/list}">
+                                <i class="fa fa-clipboard-list"></i>All Flights
+                            </a>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/users/profile}">
+                                <i class="fa fa-edit"></i>Edit My Profile
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/users/changePass}">
+                                <i class="fa fa-key"></i>Change Password
+                            </a>
+                        </li>
+                    </div>
+                    
+                    <div sec:authorize="hasRole('SELLER')">
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/Booking/list}">
+                                <i class="fa fa-clipboard-list"></i>Booking List
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/flights/search}">
+                                <i class="fa fa-plus-circle"></i>Add New Product
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/users/profile}">
+                                <i class="fa fa-edit"></i>Edit My Profile
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/users/changePass}">
+                                <i class="fa fa-key"></i>Change Password
+                            </a>
+                        </li>
+                    </div>
+                </ul>
+            </div>
+        </nav>
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+            
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <div class="btn-toolbar mb-2 mb-md-0">
+                    <div class="btn-group mr-2">
+                        <!--                        <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>-->
+                        <!--                        <div><h3>Welcome, <span sec:authentication="name">Username</span></h3></div>-->
+                        <!--                        <div><span sec:authentication="principal.authorities">[SELLER, STAFF]</span></div>-->
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Content Section -->
+            <section layout:fragment="content">
+                <p>This is filled by the content template.</p>
+            </section>
+        </main>
+    </div>
+</div>
+</body>
+</html>

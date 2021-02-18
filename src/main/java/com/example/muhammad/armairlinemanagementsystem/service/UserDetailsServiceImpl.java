@@ -37,6 +37,7 @@ public class UserDetailsServiceImpl implements UserDetailsService, IUserService{
         if (optionalUser.isPresent()){
             com.example.muhammad.armairlinemanagementsystem.model.User user = optionalUser.get();
 
+
             List<String> roleList = new ArrayList<String>();
             for (Role role: user.getRoles()) {
                 roleList.add(role.getName());
